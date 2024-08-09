@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" sizes="32x32" href="/Static/Favicon.ico" alt="error">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        body {
+            /* Specify the URL of the background image */
+            background-image: url(/Static/pexels-lukas-1420701.jpg);
+            background-size: cover; /* Cover the entire body */
+            background-repeat: no-repeat; /* Do not repeat the image */
+            background-color: rgba(255, 255, 255, 0.2); /* Change the last value (0.7) to adjust opacity */
+        }
+    </style>
+</head>
+<body>
+    <nav class="bg-white bg-opacity-50 p-4">
+        <ul class="flex items-center justify-between">
+            <li>
+                <img src="/Static/logo2.png" alt="error" class="h-20">
+            </li>
+            <li class="flex">
+                <form action="/addblog" method="GET">
+                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"> + Add Blog</button>
+                </form>
+           
+            <div class="relative mr-7 ml-8">
+                <!-- Button to trigger the dropdown -->
+                <button class="flex pt-2.5 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onclick="toggleDropdown()">
+                    Hi <%= name %>!
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 ml-1">
+                        <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
+                      </svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clip-rule="evenodd" />
+                      </svg>
+                      
+                      </button>
+        
+                <!-- Dropdown menu -->
+                <div id="myDropdown" class="absolute top-10 right-2.5 z-30 w-40 h-50 bg-gray-300 rounded-md hidden shadow-lg">
+                        <form action="/myprofile" method="GET">
+                            <button type="submit" class="p-1 flex hover:text-gray-600">
+                                <img src="/Static/user-plus.svg" class="mr-1"> Profile</button>
+                        </form>
+                        <form action="/myblogs" method="GET"> 
+                            <button type="submit" class="p-1 flex hover:text-gray-600">
+                                <img src="/Static/message-square.svg" class="mr-1">My Blogs</button>
+                        </form>
+                        <form action="/logout"  method="POST"> 
+                            <button type="submit"class="p-1 flex hover:text-gray-600">
+                                <img src="/Static/log-out.svg" class="mr-1"> Logout</button>
+                        </form>
+                </div>
+            </li>
+                
+        </ul>
+    </nav>
+    
+    <div class="text-center">
+    <h1 class="text-2xl font-bold mt-52 "> Welcome to the TechSphereX!</h1>
+    <h2 class="">A tech Blogs Website</h2>
+    </div> 
+        <ul>
+        <% blogPosts.slice(0, 5).forEach(blogPost => { %>
+          <li class="shadow-lg mt-4 p-4 bg-transparent">
+            <h2 class="text-xl font-bold"><%= blogPost.Title %></h2>
+            <p class="mt-2"><%= blogPost.content %></p>
+            <h5 class="mt-2"> Author:  <%= blogPost.author %></h5>
+            <h5 class="mt-2"> Created on:  <%= blogPost.Createdon %></h5>
+          </li>
+        <% }); %>
+      </ul>
+      <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById('myDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" sizes="32x32" href="/Static/Favicon.ico" alt="error">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        body {
+            /* Specify the URL of the background image */
+            background-image: url(/Static/pexels-lukas-1420701.jpg);
+            background-size: cover; /* Cover the entire body */
+            background-repeat: no-repeat; /* Do not repeat the image */
+            background-color: rgba(255, 255, 255, 0.2); /* Change the last value (0.7) to adjust opacity */
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="text-center">
+        <h1 class="text-2xl font-bold mt-60"> My Blogs!</h1>
+        <h2 class="">A tech Blogs Website</h2>
+    </div> 
+
+    <h1 class="font-bold size-32"> Total Number of Posts: <%= totalPosts %> </h1>
+    
+    <ul>
+        <% blogPosts.forEach(blogPost => { %>
+            <li class="shadow-lg mt-4 p-4 bg-transparent">
+                <div class="mb-4">
+                    <label for="title" class="block text-gray-700 text-lg mb-2">Title:</label>
+                    <h1 class="mb-4"><%= blogPost.Title %></h1>
+                
+                <div class="mb-4">
+                    <label for="content" class="block text-gray-700 text-lg mb-2">Content:</label>
+                    <h2><%= blogPost.content %></h2>
+                <h5 class="mt-2"> Author: <%= blogPost.author %></h5>
+                <h5 class="mt-2"> Created on: <%= blogPost.Createdon %></h5>
+
+                <div class="flex">
+                    <form action="/deletepost" method="post">
+                        <input type="hidden" name="postId" value="<%= blogPost._id %>">
+                        <button class="bg-red-500 rounded-xl mr-4 mt-4 p-2 hover:scale-110 transform transition-transform">Delete</button>
+                    </form>
+
+                    <form action="/editpost" method="get">
+                        <input type="hidden" name="postId" value="<%= blogPost._id %>">
+                        <button type="submit" class="bg-green-500 rounded-xl mt-4 p-2 hover:scale-110 transform transition-transform">Edit</button>
+                    </form>
+                </div>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,13 @@
+Specs:
+
+1. User can Signin and signup (Username password based authentication using express-session)
+2. Add Blogs
+3. View and edit User Profile
+4. Manage own blogs (CRUD)
+ 
+Tech Stack Used: 
+1. Express Js , express-session , zod
+2. EJS
+3. Tailwind CSS
+4. Mongo DB, Mongoose
+

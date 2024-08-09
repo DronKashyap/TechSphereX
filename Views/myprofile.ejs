@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/png" sizes="32x32" href="/Static/Favicon.ico" alt="error">
+    <!-- Include Tailwind CSS via CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Blog</title>
+    <style>
+        body {
+            /* Specify the URL of the background image */
+            background-image: url(/Static/pexels-tom-fisk-2606532.jpg);
+            background-size: cover; /* Cover the entire body */
+            background-repeat: no-repeat; /* Do not repeat the image */
+            background-color: rgba(255, 255, 255, 0.2); /* Change the last value (0.7) to adjust opacity */
+        }
+    </style>
+</head>
+
+<body class="flex justify-center items-center h-screen bg-gray-100">
+    <form action="/myprofile" method="post" class="bg-white bg-opacity-90 rounded-lg shadow-lg p-8 max-w-md w-full">
+        <img src="/Static/logo2.png" alt="TechSphere X Logo" class="h-20 mx-auto mb-6">
+        <h2 class="text-2xl text-center mb-4">Profile Details :</h2>
+
+        <div class="mb-4">
+            <label for="fullname" class="block text-gray-700 text-lg mb-2">Full Name:</label>
+            <input type="text" id="fullname" name="fullname" required value="<%= fname %>" class="border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:border-blue-500">
+        </div>
+        
+        <div class="mb-4">
+            <label for="username" class="block text-gray-700 text-lg mb-2">Username:</label>
+            <input type="text" id="username" name="username" required value="<%= un %>"" class="border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:border-blue-500">
+        </div>
+    
+        <div class="mb-4">
+            <label for="email" class="block text-gray-700 text-lg mb-2">Email:</label>
+            <input type="email" id="email" name="email" required value="<%= em %>"" class="border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:border-blue-500">
+        </div>
+    
+        <div class="mb-4">
+            <label for="password" class="block text-gray-700 text-lg mb-2">Password:</label>
+            <div class="relative">
+                <input type="password" id="password" name="password" required value="<%= pass %>" class="border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:border-blue-500">
+                <span id="togglePassword" class="absolute top-1/2 right-3 transform -translate-y-1/2 cursor-pointer">
+                    <h2> View </h2>
+                    <i class="far fa-eye"></i>
+                </span>
+            </div>
+        </div>
+    
+        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">Update</button>
+    
+        <script>
+            const passwordInput = document.getElementById('password');
+            const togglePasswordButton = document.getElementById('togglePassword');
+        
+            togglePasswordButton.addEventListener('click', () => {
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                } else {
+                    passwordInput.type = 'password';
+                }
+            });
+        </script>
+</body>
+
+</html>
